@@ -43,7 +43,7 @@ const Home = () => {
           <div className="highlight">
             <pre>
               <SyntaxHighlighter language="javascript"  showLineNumbers>
-                { `<script src="http://192.168.1.247:8000/ink/mini-ink-selector"></script>` }
+                { `<script src="https://ink-selector.vercel.app/ink/mini-ink-selector"></script>` }
               </SyntaxHighlighter>
             </pre>
           </div>
