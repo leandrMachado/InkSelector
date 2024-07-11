@@ -26,7 +26,7 @@ code {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #000;
+  background: #686868;
 }
 
 input:-webkit-autofill {
@@ -36,39 +36,56 @@ input:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s;
 }
 
+.information-back a {
+  color: #FFF;
+  text-decoration: none;
+}
+
 .information {
   height: 400px;
-  width: 100%;
+  width: 90%;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   flex-direction: column;
   background-color: #1a1a1a;
   color: #FFF;
+  padding-left: 10%;
+}
+
+.information-404 {
+  height: 100vh;
 }
 
 .information-title {
-  font-weight: bold;
-  font-size: 45px;
-  text-align: center;
+  width: 400px;
+    font-weight: bold;
+    font-size: 45px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
-.information-title span {
-  color: #ffe7a2;
+.information-title ink-select {
+  margin-top: 5px;
+  position: absolute;
+  right: 0px;
 }
 
 .information-content {
   max-width: 90%;
   font-weight: 200;
   font-size: 18px;
-  text-align: center;
+  text-align: start;
 }
 
 .container- {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   flex-direction: column;
+  padding-left: 10%;
 }
 
 .container- div {
@@ -77,18 +94,15 @@ input:-webkit-autofill {
 }
 
 .container- div h2 {
+  font-size: 30px;
   color: #1a1a1a;
   border-bottom: 1px dashed #cbcbcb;
   padding: 0px 0px 10px 0px;
 }
 
-.container- div h3 {
-  color: #1a1a1a;
-}
-
 .container- div p {
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 17px;
+  font-weight: 200;
 }
 
 .features-container ul li {
@@ -99,23 +113,18 @@ input:-webkit-autofill {
 
 .highlight {
   width: 100% !important;
-  background: #e7e7e7;
-  padding: 10px !important;
-  border-radius: 10px;
+  padding: 0px !important;
 }
 
 .highlight pre {
-  padding: 0px 10px;
   overflow-x: auto;
-}
-
-.highlight pre code {
-  font-size: 14px;
-  color: #696969;
+  padding: 10px;
+  background: #f3f3f3;
+  border-radius: 5px;
 }
 
 .information-footer {
-  padding: 20px;
+  padding: 20px 10%;
   background: #1a1a1a;
   color: #FFF;
   display: flex;
@@ -129,12 +138,53 @@ input:-webkit-autofill {
   color: #FFF;
 }
 
+/* Table events */
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 50%;
+  margin: 0;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+  color: black;
+}
+
 @media (max-width: 1000px) {
-  .container- div {
+  table {
     width: 90%;
+  }
+
+  .information {
+    padding-left: 8%;
+  }
+
+  .information-title {
+    width: 350px;
+    font-size: 35px;
+  }
+
+  .container- {
+    padding-left: 8%;
+  }
+
+  .container- div {
+    width: 100%;
   }
 
   .highlight {
     width: 90% !important;
+  }
+
+  .information-footer {
+    padding: 20px 12%;
   }
 }

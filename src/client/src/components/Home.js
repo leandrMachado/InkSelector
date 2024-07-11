@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 const Home = () => {
-  const codeString = `
-document.getElementById('color-picker').addEventListener('color-change', (event) => {
-  console.log(event.detail.color);
-});
-  `;
+  const [ color, setColor ] = useState('#FF7474');
+  const events = [
+    { id: 0, name: 'ink:select' , description: 'The selected color has changed' }
+  ]
 
   return (
     <div className="container">
       <div className="information">
-        <div className="information-title">Ink<span>Select</span> </div>
+        
+        <div className="information-title">
+          Ink<span style={{ color: color }}>Select</span> 
+          
+        </div>
+        <br />
         <br />
         <div className="information-content">
           A lightweight and elegant JavaScript color picker. Written in vanilla ES6, no dependencies. Accessible.
@@ -21,66 +26,117 @@ document.getElementById('color-picker').addEventListener('color-change', (event)
       <br/>
 
       <div className="container-">
-        <div className="features-container">
-          <h2>Features</h2>
-          <ul>
-            <li>Zero dependencies</li>
-            <li>Very easy to use</li>
-            <li>Customizable</li>
-            <li>Touch support</li>
-            <li>Fully accessible</li>
-          </ul>
+        <div className="overview-container">
+          <h2>Overview</h2>
+          <p>The JavaScript Color Picker control allows you to pick colors either by selecting them from the color picker container or by adjusting the hue and opacity. It supports inline mode, palette customization, and localization for seamless integration into forms.</p>
+          <br/> 
+          <div className="overview-testing">
+            
+          </div>
         </div>
 
         <div className="getting-started-container">
           <h2>Getting Started</h2>
           <h3>Basic usage</h3>
-          <p>Add the script below your page:</p>
+          <p>Import this script to your page:</p>
 
           <div className="highlight">
             <pre>
-              <code>
-                &lt;script src="coloris.min.js"&gt;&lt;/script&gt;
-              </code>
+              <SyntaxHighlighter language="javascript"  showLineNumbers>
+                { `<script src="http://192.168.1.247:8000/ink/mini-ink-selector"></script>` }
+              </SyntaxHighlighter>
             </pre>
           </div>
 
-          <p>Then just add the data-coloris attribute to your input fields:</p>
+          <p>Then just add the inkSelect tag to your page:</p>
 
           <div className="highlight">
             <pre>
-              <code>
-                &lt;input type="text" data-coloris id="coloris"/&gt;
-              </code>
+              <SyntaxHighlighter language="javascript"  showLineNumbers>
+                { `<ink-select><ink-select/>` }
+              </SyntaxHighlighter>
             </pre>
           </div>
 
           <p>That’s it. All done!</p>
           <br/>
 
-          <h3>How to get color value</h3>
-          <p>Add this script to read selected color:</p>
+          <h3>Customizing the color picker</h3>
+          <p>The ink selector can be configured by calling Ink() and passing an options object to it. For example:</p>
 
           <div className="highlight">
             <pre>
-              <code>
-                {codeString}
-              </code>
+            <SyntaxHighlighter language="javascript"  showLineNumbers>
+              { `Ink({
+  // Set the theme to light or dark mode:
+  // * light: light mode (default).
+  // * dark: dark mode.
+  // * auto: automatically enables dark mode when the user prefers a dark color scheme.
+  theme: 'dark',
+
+  // Set the preferred color string format:
+  // * hex: outputs #RRGGBB or #RRGGBBAA (default).
+  // * rgb: outputs rgb(R, G, B) or rgba(R, G, B, A).
+  // * auto: defaults to hex.
+  format: 'hex',
+
+  // The border-radius in pixels.
+  border_radius: 10,
+
+  // The margin in pixels between the input fields and the color picker's dialog.
+  margin: 2,
+
+  // Enable or disable alpha support.
+  // When disabled, it will strip the alpha value from the existing color string in all formats.
+  alpha: true,
+
+  // In inline mode, this is the default color that is set when the picker is initialized.
+  defaultColor: '#000000',
+  
+  // Set to true to save automatically save the latest colors used in max 5.
+  history: true
+})` }
+            </SyntaxHighlighter>
+            </pre>
+          </div>
+          <br/>
+
+          <h3>Events</h3>
+          <p>The ink selector features a single event: color picking. This event allows clients to choose their desired color:</p>
+          <div className="table_events">
+            <table>
+              <thead>
+                <tr>
+                  <th>Events</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {events.map((event) => (
+                  <tr key={event.id}>
+                    <td>{event.name}</td>
+                    <td>{event.description}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <br/>
+          <p>Example of how to use this event, or how to get the color selected by client :</p>
+          <div className="highlight">
+            <pre>
+            <SyntaxHighlighter language="javascript"  showLineNumbers>
+                { `document.addEventListener('ink:select', event => { console.log('New color', event.color); });` }
+              </SyntaxHighlighter>
             </pre>
           </div>
 
         </div>
-
-        <div className="contributing-container">
-          <h2>Contributing</h2>
-          <p>If you find a bug or would like to implement a missing feature, please create an issue first before submitting a pull request (PR).</p>
-          <p>When submitting a PR, please do not include the changes to the dist directory in your commits.</p>
-          
-        </div>
       </div>
 
       <div className="information-footer">
-        <p>Published with <Link to="/https://pages.github.com/">GitHub Pages</Link></p>
+        <p>InkSelect maintained by <Link to={'https://github.com/leandrMachado'}>leandrMachado</Link></p>
       </div>
     </div>
   );

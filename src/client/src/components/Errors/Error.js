@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Error = () => {
     return (
@@ -9,6 +10,7 @@ const Error = () => {
           Ops an error occurred. the page you are trying to access does not
           exist.
         </div>
+        <div className="information-back"><p><Link to="/">Back</Link></p></div>
       </div>
     );
 };

@@ -189,10 +189,10 @@ class MiniInkSelector extends HTMLElement {
   applyStylesConfig = () => {
     return `
               .color-picker {
-                  width: 160px;
+                  width: 165px;
                   display: flex;
-                  flex-direction: column;
-                  align-items: flex-start;
+                  flex-direction: row;
+                  align-items: center;
                   position: relative;
               }
               .input-controller {
@@ -238,13 +238,13 @@ class MiniInkSelector extends HTMLElement {
                   width: 100%;
                   max-width: 147px;
                   background: ${this.config.pallet_hud.BackgroundColor};
-                  margin-top: 10px;
                   border-radius: 7px;
                   border: 1.5px solid ${this.config.pallet_hud.BorderColor};
                   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
                   display: none;
                   padding: 5px;
                   justify-content: flex-start;
+                  margin-left: 10px;
               }
               .panel-button {
                   width: 25px;
